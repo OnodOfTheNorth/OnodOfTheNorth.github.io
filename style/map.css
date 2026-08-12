@@ -71,6 +71,14 @@ p {
   }
 }
 
+/* Explore page only: the shared footer (bottom logo + links) doesn't fit
+   under a full-bleed map, so hide it here. map.css loads on this page alone,
+   so this stays scoped to Explore. The element stays in the DOM so the shared
+   nav/footer script doesn't error. */
+.footer {
+  display: none;
+}
+
 .filter-group {
   margin-bottom: 20px;
 }
