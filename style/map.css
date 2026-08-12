@@ -40,27 +40,33 @@ p {
 }
 
 /* Embedded spatial explorer (self-contained map in an iframe) */
+/* Fixed-height container + absolutely-positioned iframe. This forces iOS
+   Safari to honor the height instead of expanding the iframe to its content,
+   which is what collapsed the map on iPad. */
 .map-embed {
-  width: 100%;
-  margin-top: -0.5rem;
   position: relative;
+  width: 100%;
+  height: 82vh;
+  min-height: 560px;
+  margin-top: -0.5rem;
   z-index: 1;
-  line-height: 0; /* remove inline-frame descender gap */
+  overflow: hidden;
   background: #1a1a2e; /* matches the map's own background while it loads */
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
 }
 
 .map-embed-frame {
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 88vh;
-  min-height: 560px;
+  height: 100%;
   border: 0;
 }
 
 @media (max-width: 955px) {
-  .map-embed-frame {
-    height: 82vh;
+  .map-embed {
+    height: 78vh;
     min-height: 480px;
   }
 }
